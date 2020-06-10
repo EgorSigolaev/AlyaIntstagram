@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_marginTop="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageViewProfile"
+            android:layout_width="@dimen/top_post_bar"
+            android:layout_height="@dimen/top_post_bar"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_avatar"/>
+
+        <TextView
+            android:id="@+id/textViewProfileName"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/top_post_bar"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/imageViewProfile"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Profile name" />
+
+        <ImageButton
+            android:id="@+id/buttonMoreAction"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/top_post_bar"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_more"
+            android:scaleType="centerCrop"
+            android:background="@null"/>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    
+    <RelativeLayout
+        android:layout_margin="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_post_bar">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="@dimen/bottom_post_bar"
+                android:src="@drawable/ic_favorite"
+                android:scaleType="centerCrop"
+                android:layout_marginEnd="12dp"
+                android:background="@null"/>
+
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="@dimen/bottom_post_bar"
+                android:src="@drawable/ic_comment"
+                android:scaleType="centerCrop"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="12dp"
+                android:background="@null"/>
+
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="@dimen/bottom_post_bar"
+                android:src="@drawable/ic_send"
+                android:scaleType="centerCrop"
+                android:layout_marginStart="12dp"
+                android:background="@null"/>
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="@dimen/bottom_post_bar"
+            android:layout_height="@dimen/bottom_post_bar"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_bookmark"
+            android:scaleType="centerCrop"
+            android:background="@null"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textViewPostLikes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="Нравится: 1"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/textViewAuthorComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp" />
+
+    <TextView
+        android:id="@+id/textViewShowComments"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@android:color/darker_gray"
+        android:text="Просмотреть все комментарии (804)"/>
+
+    <TextView
+        android:id="@+id/textViewPostTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="6 дней назад"
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray"/>
+
+
+</LinearLayout>
