@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Alya Intstagram</string>
+
+    <string name="advertisement">Реклама</string>
+    <string name="like">Нравится</string>
+    <string name="show_all_comments">Просмотреть все комментарии</string>
+    <string name="views">просмотров</string>
+    <string name="your_story">Ваша история</string>
+    <string name="time_not_defined">Время не определено</string>
 </resources>

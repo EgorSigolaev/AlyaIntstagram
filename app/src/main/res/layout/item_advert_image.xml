@@ -18,18 +18,34 @@
             android:layout_centerVertical="true"
             android:src="@drawable/ic_avatar"/>
 
-        <TextView
-            android:id="@+id/textViewProfileName"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/top_post_bar"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@+id/imageViewProfile"
-            android:textSize="16sp"
-            android:gravity="center"
+            android:layout_width="wrap_content"
             android:layout_centerVertical="true"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="freelancehuntcom" />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textViewProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="freelancehuntcom" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="@string/advertisement"/>
+
+        </LinearLayout>
+
+
 
         <ImageButton
             android:id="@+id/buttonMoreAction"

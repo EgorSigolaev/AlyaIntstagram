@@ -1,15 +1,14 @@
 package com.egorsigolaev.alyaintstagram.app.models
 
-import com.egorsigolaev.alyaintstagram.app.enums.POST_TYPE
+import com.egorsigolaev.alyaintstagram.app.enums.Posts
 
 data class Post (
-    val profile_name: String? = null,
-    val profile_image_url: String? = null,
-    val post_images: List<PostImage> = emptyList(),
-    val post_likes: Int? = null,
-    val post_comments: Int? = null,
-    val author_comment: String? = null,
-    val post_timestamp: Long? = null,
-    val hasNewStory: Boolean = false,
-    var post_type: Int = POST_TYPE.POST_IMAGE
+    val id: Int? = null,                 // id поста
+    val profileName: String? = null,     // username хозяина поста
+    val profileImageUrl: String? = null, // ссылка на фото хозяина поста
+    val postComments: Int? = null,       // кол - во комментариев под постом
+    val authorComment: String? = null,   // коммент автора
+    val postTimestamp: Long? = null,     // timestamp времени публикации
+    val hasNewStory: Boolean = false,    // есть - ли непросмотренная история для смотрящего пост
+    var postType: Posts? = null          // вид поста
 )

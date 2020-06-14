@@ -11,64 +11,86 @@
         android:id="@+id/toolbar">
     </include>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewPosts"
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:refreshType="material"
         android:layout_above="@+id/bottomNavigationView"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_below="@+id/toolbar">
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:overScrollMode="never"
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_above="@+id/bottomLoadingBar"
+                android:layout_below="@+id/stories_container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+    </com.baoyz.widget.PullRefreshLayout>
+
 
     <LinearLayout
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:background="@drawable/white_grey_border_top"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/buttonBottomHome"
             android:background="@null"
+            android:layout_gravity="center_vertical"
             android:src="@drawable/ic_home"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:scaleType="fitCenter"
-            android:layout_height="40dp" />
+            android:layout_height="30dp" />
 
         <ImageButton
             android:background="@null"
+            android:layout_gravity="center_vertical"
             android:src="@drawable/ic_search"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:scaleType="fitCenter"
-            android:layout_height="40dp" />
+            android:layout_height="30dp" />
 
         <ImageButton
             android:background="@null"
+            android:layout_gravity="center_vertical"
             android:src="@drawable/ic_add"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:scaleType="fitCenter"
-            android:layout_height="40dp" />
+            android:layout_height="30dp" />
 
         <ImageButton
             android:background="@null"
+            android:layout_gravity="center_vertical"
             android:src="@drawable/ic_favorite"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:scaleType="fitCenter"
-            android:layout_height="40dp" />
+            android:layout_height="30dp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageViewMyProfile"
             android:background="@null"
+            android:layout_gravity="center_vertical"
             android:src="@drawable/ic_avatar"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="40dp" />
+            android:layout_height="30dp" />
 
     </LinearLayout>
+
 
 </RelativeLayout>

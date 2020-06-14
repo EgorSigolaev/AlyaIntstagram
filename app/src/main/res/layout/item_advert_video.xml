@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:layout_marginTop="16dp"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout android:layout_marginTop="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,18 +18,32 @@
             android:layout_centerVertical="true"
             android:src="@drawable/ic_avatar"/>
 
-        <TextView
-            android:id="@+id/textViewProfileName"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/top_post_bar"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@+id/imageViewProfile"
-            android:textSize="20sp"
-            android:gravity="center"
+            android:layout_width="wrap_content"
             android:layout_centerVertical="true"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="Profile name" />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textViewProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="freelancehuntcom" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="@string/advertisement"/>
+
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/buttonMoreAction"
@@ -37,18 +52,18 @@
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             android:src="@drawable/ic_more"
-            android:scaleType="centerCrop"
             android:background="@null"/>
 
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPost"
+        android:overScrollMode="never"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     
     <RelativeLayout
-        android:layout_margin="12dp"
+        android:layout_margin="8dp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_post_bar">
 
@@ -95,12 +110,12 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/textViewPostLikes"
+        android:id="@+id/textViewPostViews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:text="Нравится: 1"
-        android:textSize="20sp"
+        android:text="12345 просмотров"
+        android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@android:color/black"/>
 
@@ -109,6 +124,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
+        android:textSize="16sp"
+        android:ellipsize="end"
+        android:maxLines="2"
         android:layout_marginEnd="12dp" />
 
     <TextView
@@ -117,7 +135,7 @@
         android:layout_marginStart="12dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textColor="@android:color/darker_gray"
         android:text="Просмотреть все комментарии (804)"/>
 
@@ -127,7 +145,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="6 дней назад"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:textColor="@android:color/darker_gray"/>
 
 

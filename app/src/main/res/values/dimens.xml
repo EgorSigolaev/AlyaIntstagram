@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="action_bar_size">40dp</dimen>
+    <dimen name="action_bar_size">50dp</dimen>
+    <dimen name="stories_container_height">80dp</dimen>
+    <dimen name="story_width">60dp</dimen>
+    <dimen name="story_height">80dp</dimen>
+    <dimen name="story_image_width">40dp</dimen>
+    <dimen name="story_image_height">60dp</dimen>
     <dimen name="top_post_bar">30dp</dimen>
     <dimen name="bottom_post_bar">30dp</dimen>
     <dimen name="story_border_width">2dp</dimen>
