@@ -3,6 +3,7 @@ package com.egorsigolaev.alyaintstagram.app.view_holders
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Typeface
+import android.os.Handler
 import android.text.SpannableString
 import android.text.TextUtils
 import android.text.format.DateUtils
@@ -39,7 +40,8 @@ class AdvertVideoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
 
 
     @SuppressLint("SetTextI18n")
-    fun bind(post: Post){
+    fun bind(post: Post) {
+
 
         val context = itemView.context
 
@@ -48,45 +50,78 @@ class AdvertVideoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
             .placeholder(R.drawable.ic_avatar)
             .into(imageViewProfile)
 
-        if(post.hasNewStory){
-            imageViewProfile.borderWidth = context.resources.getDimension(R.dimen.story_border_width).toInt()
-            imageViewProfile.borderColor = context.resources.getColor(R.color.story_border_color)
+        if (post.hasNewStory) {
+            imageViewProfile.borderWidth =
+                context.resources.getDimension(R.dimen.story_border_width).toInt()
+            imageViewProfile.borderColor =
+                context.resources.getColor(R.color.story_border_color)
         }
-        textViewPostViews.text = "${(post.postType as Posts.AdvertVideo).views} ${context.getString(R.string.views)}"
+        textViewPostViews.text =
+            "${(post.postType as Posts.AdvertVideo).views} ${context.getString(R.string.views)}"
 
 
-        if (post.postTimestamp == null){
+        if (post.postTimestamp == null) {
             textViewPostTime.text = context.getString(R.string.time_not_defined)
-        }else{
-            textViewPostTime.text = DateUtils.getRelativeTimeSpanString(post.postTimestamp, Date().time, 0)
+        } else {
+            textViewPostTime.text =
+                DateUtils.getRelativeTimeSpanString(post.postTimestamp, Date().time, 0)
         }
 
 
 
-        if(post.authorComment != null){
+        if (post.authorComment != null) {
             val spannableProfileName = SpannableString(post.profileName)
-            spannableProfileName.setSpan(ForegroundColorSpan(context.resources.getColor(android.R.color.black)), 0, spannableProfileName.length, 0)
-            spannableProfileName.setSpan(StyleSpan(Typeface.BOLD), 0, spannableProfileName.length, 0)
+            spannableProfileName.setSpan(
+                ForegroundColorSpan(context.resources.getColor(android.R.color.black)),
+                0,
+                spannableProfileName.length,
+                0
+            )
+            spannableProfileName.setSpan(
+                StyleSpan(Typeface.BOLD),
+                0,
+                spannableProfileName.length,
+                0
+            )
 
             val spannableAuthorComment = SpannableString(post.authorComment)
-            spannableAuthorComment.setSpan(ForegroundColorSpan(context.resources.getColor(android.R.color.black)), 0, spannableAuthorComment.length, 0)
-            spannableAuthorComment.setSpan(StyleSpan(Typeface.NORMAL), 0, spannableAuthorComment.length, 0)
+            spannableAuthorComment.setSpan(
+                ForegroundColorSpan(
+                    context.resources.getColor(
+                        android.R.color.black
+                    )
+                ), 0, spannableAuthorComment.length, 0
+            )
+            spannableAuthorComment.setSpan(
+                StyleSpan(Typeface.NORMAL),
+                0,
+                spannableAuthorComment.length,
+                0
+            )
 
-            val allAuthorComment = TextUtils.concat(spannableProfileName, " ", spannableAuthorComment)
+            val allAuthorComment =
+                TextUtils.concat(spannableProfileName, " ", spannableAuthorComment)
             textViewAuthorComment.text = allAuthorComment
-        }else{
+        } else {
             textViewAuthorComment.visibility = View.GONE
         }
 
-        textViewShowComments.text = "${context.getString(R.string.show_all_comments)} (${post.postComments})"
+        textViewShowComments.text =
+            "${context.getString(R.string.show_all_comments)} (${post.postComments})"
 
         textViewProfileName.text = post.profileName
 
+        recyclerViewPost.isNestedScrollingEnabled = false
         recyclerViewPost.setHasFixedSize(true)
-        recyclerViewPost.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
-        recyclerViewPost.adapter = PostImagesAdapter(urls = (post.postType as Posts.AdvertVideo).videosUrls, postType = post.postType!!)
+        recyclerViewPost.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewPost.adapter = PostImagesAdapter(
+            urls = (post.postType as Posts.AdvertVideo).videosUrls,
+            postType = post.postType!!
+        )
         recyclerViewPost.onFlingListener = null
         PagerSnapHelper().attachToRecyclerView(recyclerViewPost)
+
     }
 
 }

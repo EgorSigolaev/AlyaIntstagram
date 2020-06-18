@@ -6,6 +6,7 @@ import android.graphics.Typeface
 import android.text.SpannableString
 import android.text.TextUtils
 import android.text.format.DateUtils
+import android.text.format.DateUtils.FORMAT_ABBREV_RELATIVE
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.util.Log
@@ -79,6 +80,7 @@ class PostVideoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         textViewProfileName.text = post.profileName
 
+        recyclerViewPost.isNestedScrollingEnabled = false
         recyclerViewPost.setHasFixedSize(true)
         recyclerViewPost.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
         recyclerViewPost.adapter = PostImagesAdapter(urls = (post.postType as Posts.PostVideo).videosUrls, postType = post.postType!!)

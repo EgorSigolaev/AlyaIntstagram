@@ -1,6 +1,5 @@
 package com.egorsigolaev.alyaintstagram.app.activities
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -15,7 +14,6 @@ import com.egorsigolaev.alyaintstagram.R
 import com.egorsigolaev.alyaintstagram.app.App.Companion.TAG
 import com.egorsigolaev.alyaintstagram.app.adapters.PostsAdapter
 import com.egorsigolaev.alyaintstagram.app.adapters.StoriesContainerAdapter
-import com.egorsigolaev.alyaintstagram.app.interfaces.PagingListener
 import com.egorsigolaev.alyaintstagram.app.models.Post
 import com.egorsigolaev.alyaintstagram.app.models.Profile
 import com.egorsigolaev.alyaintstagram.app.models.Story
@@ -43,9 +41,14 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         setContentView(R.layout.activity_main)
         configureRefreshLayout()
         configureViews()
-        configureRecyclerView()
+
         presenter.loadStories()
         presenter.loadProfileImageUrl()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        configureRecyclerView()
     }
 
     private fun configureRefreshLayout(){
@@ -70,12 +73,14 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         storiesContainerAdapter = StoriesContainerAdapter()
         postAdapter = PostsAdapter()
         mergeAdapter = MergeAdapter(storiesContainerAdapter, postAdapter)
+        recyclerView.setHasFixedSize(true)
         recyclerView.apply {
             layoutManager = LinearLayoutManager(applicationContext)
             adapter = mergeAdapter
         }
     }
 
+    //Можно проскролить до вверха, как в инсте
     private fun scrollToTop() {
         Handler().post {
             smoothScroller.targetPosition = 0
@@ -102,9 +107,9 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     }
 
     override fun onProfileLoaded(profile: Profile) {
-        Log.d(TAG, "onProfileLoaded url: " + profile.profile_image_url)
+        Log.d(TAG, "onProfileLoaded url: " + profile.profileImageUrl)
         Picasso.get()
-            .load(profile.profile_image_url)
+            .load(profile.profileImageUrl)
             .into(imageViewMyProfile)
     }
 }

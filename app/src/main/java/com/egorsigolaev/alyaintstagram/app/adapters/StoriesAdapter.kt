@@ -40,7 +40,7 @@ class StoriesAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemViewType(position: Int): Int {
-        return stories[position].story_type
+        return stories[position].storyType
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -56,16 +56,16 @@ class StoriesAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(story: Story){
             val context = itemView.context
-            if(story.has_unchecked_story){
+            if(story.hasUncheckedStory){
                 imageViewProfile.borderWidth = context.resources.getDimension(R.dimen.story_border_width).toInt()
                 imageViewProfile.borderColor = context.resources.getColor(R.color.story_border_color)
             }
             Picasso.get()
-                .load(story.profile_image_url)
+                .load(story.profileImageUrl)
                 .placeholder(R.color.grey)
                 .into(imageViewProfile)
 
-            textViewProfileName.text = story.profile_name
+            textViewProfileName.text = story.profileName
         }
     }
 
@@ -76,13 +76,13 @@ class StoriesAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(story: Story){
             val context = itemView.context
-            if(story.has_unchecked_story){
+            if(story.hasUncheckedStory){
                 imageViewProfile.borderWidth = context.resources.getDimension(R.dimen.story_border_width).toInt()
                 imageViewProfile.borderColor = context.resources.getColor(R.color.story_border_color)
                 imageViewAddStory.visibility = View.INVISIBLE
             }
             Picasso.get()
-                .load(story.profile_image_url)
+                .load(story.profileImageUrl)
                 .placeholder(R.color.grey)
                 .into(imageViewProfile)
             textViewProfileName.text = context.getString(R.string.your_story)
