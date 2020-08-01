@@ -10,7 +10,7 @@ import io.reactivex.Single
 class MainRepository {
 
 
-
+    //симуляция целой базы данных (целая лента новостей)
     fun getAllPosts(): Single<List<Post>> {
 
         return Single.create {
