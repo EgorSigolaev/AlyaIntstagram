@@ -225,6 +225,7 @@ class MainRepository {
         }
     }
 
+    //загрузка порции данных из общего листа
     fun getPosts(startIndex: Int, loadSize: Int): Single<List<Post>>{
 
         return Single.create { emitter ->
