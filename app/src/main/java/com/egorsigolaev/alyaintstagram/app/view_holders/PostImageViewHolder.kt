@@ -39,65 +39,12 @@ class PostImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             .placeholder(R.drawable.ic_avatar)
             .into(imageViewProfile)
 
-        if (post.hasNewStory) {
-            imageViewProfile.borderWidth =
-                context.resources.getDimension(R.dimen.story_border_width).toInt()
-            imageViewProfile.borderColor =
-                context.resources.getColor(R.color.story_border_color)
-        }
-        textViewPostLikes.text =
-            "${context.getString(R.string.like)}: ${(post.postType as Posts.PostImage).likes}"
-
-
-        if (post.postTimestamp == null) {
-            textViewPostTime.text = context.getString(R.string.time_not_defined)
-        } else {
-            textViewPostTime.text =
-                DateUtils.getRelativeTimeSpanString(post.postTimestamp, Date().time, 0)
-        }
-
-
-
-        if (post.authorComment != null) {
-            val spannableProfileName = SpannableString(post.profileName)
-            spannableProfileName.setSpan(
-                ForegroundColorSpan(context.resources.getColor(android.R.color.black)),
-                0,
-                spannableProfileName.length,
-                0
-            )
-            spannableProfileName.setSpan(
-                StyleSpan(Typeface.BOLD),
-                0,
-                spannableProfileName.length,
-                0
-            )
-
-            val spannableAuthorComment = SpannableString(post.authorComment)
-            spannableAuthorComment.setSpan(
-                ForegroundColorSpan(
-                    context.resources.getColor(
-                        android.R.color.black
-                    )
-                ), 0, spannableAuthorComment.length, 0
-            )
-            spannableAuthorComment.setSpan(
-                StyleSpan(Typeface.NORMAL),
-                0,
-                spannableAuthorComment.length,
-                0
-            )
-
-            val allAuthorComment =
-                TextUtils.concat(spannableProfileName, " ", spannableAuthorComment)
-            textViewAuthorComment.text = allAuthorComment
-        } else {
-            textViewAuthorComment.visibility = View.GONE
-        }
-
-        textViewShowComments.text =
-            "${context.getString(R.string.show_all_comments)} (${post.postComments})"
-
+        imageViewProfile.borderWidth = post.storyBorderWidth
+        imageViewProfile.borderColor = post.storyBorderColor
+        textViewPostLikes.text = post.likesText
+        textViewAuthorComment.text = post.allAuthorComment
+        textViewPostTime.text = post.timeText
+        textViewShowComments.text = post.commentsText
         textViewProfileName.text = post.profileName
 
         recyclerViewPost.isNestedScrollingEnabled = false

@@ -73,8 +73,8 @@ class PostsAdapter : PagedListAdapter<Post, RecyclerView.ViewHolder>(ItemsDiffCa
         return when(getItem(position)?.postType){
             is Posts.PostImage -> POST_IMAGE
             is Posts.PostVideo -> POST_VIDEO
-            is Posts.AdvertImage -> ADVERT_IMAGE
-            is Posts.AdvertVideo -> ADVERT_VIDEO
+            is Posts.PostImage -> ADVERT_IMAGE
+            is Posts.PostVideo -> ADVERT_VIDEO
             else -> -1
         }
     }

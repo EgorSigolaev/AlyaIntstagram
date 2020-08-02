@@ -7,8 +7,7 @@ import com.egorsigolaev.alyaintstagram.app.models.Profile
 import com.egorsigolaev.alyaintstagram.app.models.Story
 import io.reactivex.Single
 
-class MainRepository {
-
+class MainRepository(private val mapper: PostsMapper) {
 
     //симуляция целой базы данных (целая лента новостей)
     fun getAllPosts(): Single<List<Post>> {
@@ -54,7 +53,7 @@ class MainRepository {
             authorComment = "Author comment",
             postTimestamp = 1592074546000,
             hasNewStory = false,
-            postType = Posts.AdvertImage(urls, likes = 12)
+            postType = Posts.PostImage(urls, likes = 12)
         )
         val post4 = Post(
             id = 3,
@@ -64,7 +63,7 @@ class MainRepository {
             authorComment = "Author comment",
             postTimestamp = 1592074546000,
             hasNewStory = false,
-            postType = Posts.AdvertVideo(listOf("https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4", "https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4"), views = 12345)
+            postType = Posts.PostVideo(listOf("https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4", "https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4"), views = 12345)
         )
         val post5 = Post(
             profileName = "username",
@@ -101,7 +100,7 @@ class MainRepository {
             authorComment = "Author comment",
             postTimestamp = 1592074546000,
             hasNewStory = false,
-            postType = Posts.AdvertImage(urls, likes = 12)
+            postType = Posts.PostImage(urls, likes = 12)
         )
         val post9 = Post(
             profileName = "username",
@@ -137,7 +136,7 @@ class MainRepository {
             authorComment = "Author comment",
             postTimestamp = 1592074546000,
             hasNewStory = false,
-            postType = Posts.AdvertImage(urls, likes = 12)
+            postType = Posts.PostImage(urls, likes = 12)
         )
         val post13 = Post(
             profileName = "username",
@@ -182,7 +181,7 @@ class MainRepository {
             authorComment = "Author comment",
             postTimestamp = 1592074546000,
             hasNewStory = false,
-            postType = Posts.AdvertVideo(listOf("https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4", "https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4"), views = 12345)
+            postType = Posts.PostVideo(listOf("https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4", "https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4"), views = 12345)
         )
         val post18 = Post(
             profileName = "username",
@@ -209,7 +208,7 @@ class MainRepository {
             authorComment = "Author comment",
             postTimestamp = 1592074546000,
             hasNewStory = false,
-            postType = Posts.AdvertVideo(listOf("https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4", "https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4"), views = 12345)
+            postType = Posts.PostVideo(listOf("https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4", "https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4"), views = 12345)
         )
         val post21 = Post(
             profileName = "username",
@@ -221,7 +220,7 @@ class MainRepository {
             postType = Posts.PostVideo(listOf("https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4", "https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4"), views = 12345)
         )
 
-        it.onSuccess(listOf(post1, post2, post3, post4,post5, post6, post7, post8,post9, post10, post11, post12,post13, post14, post15, post16,post17, post18, post19, post20, post21))
+        it.onSuccess(mapper.map(listOf(post1, post2, post3, post4,post5, post6, post7, post8,post9, post10, post11, post12,post13, post14, post15, post16,post17, post18, post19, post20, post21)))
         }
     }
 

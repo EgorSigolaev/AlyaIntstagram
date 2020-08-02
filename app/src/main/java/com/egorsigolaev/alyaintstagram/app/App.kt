@@ -23,7 +23,7 @@ class App: Application() {
 
     private fun initDagger(){
         appComponent = DaggerAppComponent.builder()
-            .repositoryModule(RepositoryModule())
+            .application(this)
             .build()
     }
 }

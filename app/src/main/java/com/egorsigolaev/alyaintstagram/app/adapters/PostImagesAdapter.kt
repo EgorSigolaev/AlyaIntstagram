@@ -17,7 +17,7 @@ class PostImagesAdapter(var urls: List<String>, var postType: Posts): RecyclerVi
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if(postType is Posts.PostImage || postType is Posts.AdvertImage){
+        return if(postType is Posts.PostImage || postType is Posts.PostImage){
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false)
             PostImagesHolder(itemView = view)
         }else{
@@ -36,7 +36,7 @@ class PostImagesAdapter(var urls: List<String>, var postType: Posts): RecyclerVi
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if(postType is Posts.PostImage || postType is Posts.AdvertImage){
+        if(postType is Posts.PostImage || postType is Posts.PostImage){
             (holder as PostImagesHolder).bind(urls[position])
         }else{
             (holder as PostVideosHolder).bind(urls[position])
@@ -62,8 +62,8 @@ class PostImagesAdapter(var urls: List<String>, var postType: Posts): RecyclerVi
 
         fun bind(url: String){
             when(postType){
-                is Posts.PostVideo -> textViewVideo.text = "Видео - пост"
-                is Posts.AdvertVideo -> textViewVideo.text = "Видео - реклама"
+                is Posts.PostImage -> textViewVideo.text = "Видео - пост"
+                is Posts.PostVideo -> textViewVideo.text = "Видео - реклама"
             }
         }
     }

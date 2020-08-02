@@ -51,14 +51,14 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         configureRecyclerView()
     }
 
-    private fun configureRefreshLayout(){
+    private fun configureRefreshLayout() {
         refreshLayout.setOnRefreshListener {
             presenter.loadStories()
             presenter.loadPosts()
         }
     }
 
-    private fun configureViews(){
+    private fun configureViews() {
         buttonBottomHome.setOnClickListener {
             scrollToTop()
         }
@@ -69,7 +69,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         }
     }
 
-    private fun configureRecyclerView(){
+    private fun configureRecyclerView() {
         storiesContainerAdapter = StoriesContainerAdapter()
         postAdapter = PostsAdapter()
         mergeAdapter = MergeAdapter(storiesContainerAdapter, postAdapter)
@@ -82,10 +82,15 @@ class MainActivity : MvpAppCompatActivity(), MainView {
 
     //Можно проскролить до вверха, как в инсте
     private fun scrollToTop() {
-        Handler().post {
-            smoothScroller.targetPosition = 0
-            recyclerView.layoutManager?.startSmoothScroll(smoothScroller)
+
+        smoothScroller = object : LinearSmoothScroller(applicationContext) {
+            override fun getVerticalSnapPreference(): Int {
+                return SNAP_TO_START
+            }
         }
+        smoothScroller.targetPosition = 0
+        recyclerView.layoutManager?.startSmoothScroll(smoothScroller)
+
     }
 
     internal class MainThreadExecutor : Executor {
